@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+	version="2.0">
+
+	<named-query name="sysLogin.queryListByUsername">
+		<query>select m from SysLogin m  where  m.username=?1</query>
+	</named-query>
+	<named-query name="sysRole.queryListByMemberId">
+		<query>select m.role from LkMemberRole m where  m.sysMember.id=?1</query>
+	</named-query>
+	<named-query name="sysMember.queryListByUsername">
+		<query>select new CommType(m.id,m.username) from SysMember m where  m.username like ?1</query>
+	</named-query>
+	<named-query name="lkMemberRole.deleteByMemberId">
+		<query>delete from LkMemberRole lk where lk.sysMember.id=?1</query>
+	</named-query>
+
+	<named-query name="sysMemberInfo.updateCanDiscount">
+		<query>update SysMemberInfo set candiscount=?1 where sysMemberId=?2</query>
+	</named-query>
+
+	<named-query name="sysMemberInfo.queryBySysMemberId">
+		<query>select m from SysMemberInfo m where m.sysMemberId=?1</query>
+	</named-query>
+
+	<named-query name="sysMemberInfo.updateScore">
+		<query>update SysMemberInfo set score=score+?1 where sysMemberId=?2</query>
+	</named-query>
+
+</entity-mappings>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+
+</head>
+<body>
+省:
+<select id="node1" onchange="showNext(this,1)">
+	<option value=''></option>
+</select>
+市：
+<select id="node2" onchange="showNext(this,2)">
+	<option value=''></option>
+</select>
+县：
+<select id="node3" onchange="showNext(this,3)">
+	<option value=''></option>
+</select>
+范围：
+<select id="node4">
+	<option value=''></option>
+</select>
+<script type="text/javascript">
+var cityStore=null;
+$.ajax({
+	type: "get",
+	url:'utils/cityList?callback=?',
+	async: false,
+	dataType: "jsonp",
+	success: function(data){
+		cityStore=data;
+		var sel= document.getElementById("node1"); 
+		for(var i=0;i<cityStore.list.length;i++){
+			sel.options.add(new Option(cityStore.list[i].name,cityStore.list[i].id));
+		}
+	},
+	error:function(data){
+		alert('请求失败，请稍后再试');
+	}
+});
+
+/**
+ */
+function getNextCity(i){
+	if(i==0){
+		return cityStore.list;
+	}
+	var list=getNextCity(i-1);
+	
+	if(list!=null){
+		var sel= document.getElementById("node"+i); 
+		
+		for(var s=0;s<list.length;s++){console.log(list[s].id+','+sel.value)
+			if(list[s].id==sel.value){
+				return list[s].subCity;
+			}
+		}
+	}
+}
+
+function showNext(e,i){
+	if(e.value==null||e.value=='')return;
+	var list=getNextCity(i);
+	
+	if(list==null)return;
+	console.log(list);
+	
+	$("#node"+(i+1)+" option").remove();
+	var sel= document.getElementById("node"+(i+1)); 
+	sel.options.add(new Option('请选择',''));
+	for(var i=0;i<list.length;i++){
+		sel.options.add(new Option(list[i].name,list[i].id));
+	}
+}
+</script>
+</body>
+</html>

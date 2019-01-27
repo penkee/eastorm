@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/cache
+    http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <cache:annotation-driven />
+
+    <bean id="accountServiceBean" class="com.eastorm.core.cache.AccountService"/>
+
+    <!-- generic cache manager -->
+    <bean id="cacheManager"
+          class="com.eastorm.core.cache.MyCacheManager">
+        <property name="caches">
+            <set>
+
+                <bean
+                        class="com.eastorm.core.cache.MyCache"
+                        p:name="accountCache" />
+            </set>
+        </property>
+    </bean>
+</beans>

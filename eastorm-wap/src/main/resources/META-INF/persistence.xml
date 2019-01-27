@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<persistence-unit name="Hibernate_SQL_JPA"
+					  transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<mapping-file>META-INF/orm-base.xml</mapping-file>
+		<mapping-file>META-INF/orm-member.xml</mapping-file>
+
+		<!--cms-impl-->
+		<mapping-file>META-INF/jpql/menuitem.xml</mapping-file>
+		<mapping-file>META-INF/jpql/member.xml</mapping-file>
+
+		<class>com.eastorm.core.database.sys.DefaultEntity</class>
+		<class>com.eastorm.core.database.sys.AuditDefaultEntity</class>
+
+		<class>com.eastorm.api.common.domain.CommType</class>
+		<class>com.eastorm.api.common.domain.DictItem</class>
+		<class>com.eastorm.api.common.domain.MenuItem</class>
+		<class>com.eastorm.api.common.domain.NodeLink</class>
+		<class>com.eastorm.api.common.domain.SysCache</class>
+		<class>com.eastorm.api.common.domain.SysCity</class>
+		<class>com.eastorm.api.common.domain.SysOplog</class>
+		<class>com.eastorm.api.common.domain.SysUrlsource</class>
+
+		<class>com.eastorm.api.member.domain.LkMemberRole</class>
+		<class>com.eastorm.api.member.domain.SysLogin</class>
+		<class>com.eastorm.api.member.domain.SysMember</class>
+		<class>com.eastorm.api.member.domain.SysMemberInfo</class>
+		<class>com.eastorm.api.member.domain.SysRole</class>
+
+		<class>com.eastorm.api.hedian.domain.BizActComment</class>
+		<class>com.eastorm.api.hedian.domain.BizActImage</class>
+		<class>com.eastorm.api.hedian.domain.BizActivityjoin</class>
+		<class>com.eastorm.api.hedian.domain.BizActivitysum</class>
+		<class>com.eastorm.api.hedian.domain.WapMenuItem</class>
+	</persistence-unit>
+	
+</persistence> 

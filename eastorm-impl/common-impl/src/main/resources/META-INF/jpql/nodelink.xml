@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+	version="2.0">
+	<named-query name="menu.getList">
+		<query>select m from NodeLink  m</query>
+	</named-query>
+	<!-- 查询孩子-->
+	<named-query name="menu.qryListByParentId">
+		<query>select m.node from NodeLink  m where m.parent.id=?1</query>
+	</named-query>
+	<!-- 为了删除menuitem数据，有外键约束 -->
+	<named-query name="menu.deleteParentAndChild">
+		<query>delete NodeLink m where m.parent.id=?1 or m.node.id=?1</query>
+	</named-query>
+	<named-query name="menu.getListByType">
+		<query>select m from NodeLink  m where m.node.type=?1  order by m.node.tKey</query>
+	</named-query>
+</entity-mappings>

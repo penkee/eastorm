@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>图片滑动验证</title>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script src="https://cdn.dingxiang-inc.com/ctu-group/captcha-ui/index.js"></script>
+</head>
+<body>
+滑块验证<div id="c1"></div>
+
+
+<script type="text/javascript">
+var myCaptcha = _dx.Captcha(document.getElementById('c1'), {
+    appId: '05e7ae43da213a470173fc47f7774d5e',   //appId,开通服务后可在控制台中“服务管理”模块获取
+    success: function (token) {
+       $.ajax({
+			type: "get",
+			url:'loginController/login?token='+token,
+			async: false,
+			dataType: "json",
+			success: function(resp){
+				alert(resp.data);
+			},
+			error:function(resp){
+				alert('请求失败，请稍后再试');
+			}
+		});
+    }
+})
+</script>
+</body>
+</html>

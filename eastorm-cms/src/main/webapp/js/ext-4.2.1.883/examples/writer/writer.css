@@ -1,0 +1,51 @@
+.icon-user {
+    background-image: url(images/user.png) !important;
+}
+
+.icon-user-add {
+    background-image: url(images/user_add.gif) !important;
+}
+
+.icon-save {
+    background-image: url(images/save.gif) !important;
+}
+
+.icon-reset {
+    background-image: url(images/stop.png) !important;
+}
+
+.icon-grid {
+    background-image: url(images/grid.png) !important;
+}
+
+.icon-add {
+    background-image: url(images/add.png) !important;
+}
+
+.icon-delete {
+    background-image: url(images/delete.png) !important;
+}
+.icon-search {
+    background-image: url(images/search.png) !important;
+}
+.icon-update {
+    background-image: url(images/update.png) !important;
+}
+.icon-detail {
+    background-image: url(images/detail.png) !important;
+}
+.icon-set {
+    background-image: url(images/set.png) !important;
+}
+.icon-refresh {
+    background-image: url(images/refresh.png) !important;
+}
+.icon-up {
+    background-image: url(images/up.png) !important;
+}
+.heditImgIcon{
+	background-image: url(images/htmladdImg.png) !important;
+}
+.icon-agree{
+	background-image: url(images/agree.png) !important;
+}

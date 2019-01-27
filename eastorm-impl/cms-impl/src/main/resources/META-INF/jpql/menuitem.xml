@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+	version="2.0">
+	<!-- 根据authUrls精确查询记录 -->
+	<named-query name="menuitem.queryByAuthUrls">
+		<query>select m from MenuItem  m where m.typeValue=?1</query>
+	</named-query>
+	<named-query name="DictItem.queryListAll">
+		<query>select m from DictItem  m order by name</query>
+	</named-query>
+		<named-query name="SysCache.queryListAll">
+		<query>select m from SysCache  m</query>
+	</named-query>
+</entity-mappings>
